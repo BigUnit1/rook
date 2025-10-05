@@ -1,6 +1,8 @@
 import { PrismaClient } from "@prisma/client"
 import bcrypt from "bcryptjs"
 
+const prisma = globalThis.__prismaClient || new PrismaClient()
+if (process.env.NODE_ENV !== "production") globalThis.__prismaClient = prisma
 
 export async function POST(req) {
   try {
