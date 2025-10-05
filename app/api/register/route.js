@@ -1,9 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 import bcrypt from "bcryptjs"
 
-// Use a global PrismaClient in development to avoid exhausted connections
-const prisma = globalThis.__prismaClient || new PrismaClient()
-if (process.env.NODE_ENV !== "production") globalThis.__prismaClient = prisma
 
 export async function POST(req) {
   try {
